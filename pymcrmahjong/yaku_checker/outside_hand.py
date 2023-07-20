@@ -5,9 +5,9 @@ from tile import Tiles
 from base_yaku import BaseYaku
 
 
-class HalfOutsideHand(BaseYaku):
+class OutsideHand(BaseYaku):
     def __init__(self):
-        super().__init__(YakuEnum.HALF_OUTSIDE_HAND)
+        super().__init__(YakuEnum.OUTSIDE_HAND)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
         return all(

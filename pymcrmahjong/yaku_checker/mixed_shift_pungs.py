@@ -6,35 +6,32 @@ from division import Division
 from base_yaku import BaseYaku
 
 
-class PureShiftPungs(BaseYaku):
+class MixedShiftPungs(BaseYaku):
     def __init__(self):
-        super().__init__(YakuEnum.PURE_SHIFTED_PUNGS)
+        super().__init__(YakuEnum.MIXED_SHIFT_PUNGS)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
-        for part1, part2, part3, part4 in combinations(division.parts, 4):
+        for part1, part2, part3 in combinations(division.parts, 3):
             if not (
                 part1.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD) and
                 part2.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD) and
-                part3.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD) and
-                part4.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD)
+                part3.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD)
             ):
                 continue
-            if not (
-                    part1.tile_type == part2.tile_type and
-                    part2.tile_type == part3.tile_type and
-                    part3.tile_type == part4.tile_type
+            if (
+                part1.tile_type == part2.tile_type or
+                part2.tile_type == part3.tile_type or
+                part1.tile_type == part1.tile_type
             ):
                 continue
             first_number_list = sorted(
                 [part1.counts.get_tile_number[0],
                  part2.counts.get_tile_number[0],
-                 part3.counts.get_tile_number[0],
-                 part4.counts.get_tile_number[0]]
+                 part3.counts.get_tile_number[0]]
             )
             if (
                 first_number_list[0] + 1 == first_number_list[1] and
-                first_number_list[1] + 1 == first_number_list[2] and
-                first_number_list[2] + 1 == first_number_list[3]
+                first_number_list[1] + 1 == first_number_list[2]
             ):
                 return int(True)
         return int(False)

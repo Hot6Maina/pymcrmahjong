@@ -4,9 +4,9 @@ from division import Division
 from base_yaku import BaseYaku
 
 
-class AllTypes(BaseYaku):
+class OneVoidedSuit(BaseYaku):
     def __init__(self):
-        super().__init__(YakuEnum.ALL_TYPES)
+        super().__init__(YakuEnum.ONE_VOIDED_SUIT)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
         tile_type_set = set([part.tile_type for part in division.parts])

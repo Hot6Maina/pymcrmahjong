@@ -1,8 +1,9 @@
+from itertools import combinations
+
 from common import DivisionPartTypeEnum, YakuEnum
 from agari_info import AgariInfo
 from division import Division
 from base_yaku import BaseYaku
-from tile import Tiles
 
 
 class TriplePung(BaseYaku):
@@ -10,8 +11,27 @@ class TriplePung(BaseYaku):
         super().__init__(YakuEnum.TRIPLE_PUNG)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
-        count = [0] * 10
-        for part in division.parts:
-            if part.counts.is_containing_only(Tiles.NUMBERS) and (part.type == DivisionPartTypeEnum.TRIPLE or part.type == DivisionPartTypeEnum.QUAD):
-                count[part.counts.get_tile_number[0]] += 1
-        return count.count(3)
+        for part1, part2, part3 in combinations(division.parts, 3):
+            if not (
+                part1.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD) and
+                part2.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD) and
+                part3.type in (DivisionPartTypeEnum.TRIPLE, DivisionPartTypeEnum.QUAD)
+            ):
+                continue
+            if (
+                part1.tile_type == part2.tile_type or
+                part2.tile_type == part3.tile_type or
+                part1.tile_type == part1.tile_type
+            ):
+                continue
+            first_number_list = sorted(
+                [part1.counts.get_tile_number[0],
+                 part2.counts.get_tile_number[0],
+                 part3.counts.get_tile_number[0]]
+            )
+            if (
+                first_number_list[0] == first_number_list[1] and
+                first_number_list[1] == first_number_list[2]
+            ):
+                return int(True)
+        return int(False)

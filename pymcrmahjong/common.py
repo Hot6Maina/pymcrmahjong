@@ -126,6 +126,7 @@ class YakuEnum(UpperStrEnum):
     MIXED_STRAIGHT = auto()
     REVERSIBLE_TILES = auto()
     MIXED_TRIPLE_CHOW = auto()
+    MIXED_SHIFT_PUNGS = auto()
     CHICKEN_HAND = auto()
     LAST_TILE_DRAW = auto()
     LAST_TILE_CLAIM = auto()

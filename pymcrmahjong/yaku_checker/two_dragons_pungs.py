@@ -5,9 +5,9 @@ from tile import Tiles
 from base_yaku import BaseYaku
 
 
-class DragonPung(BaseYaku):
+class TwoDragonPung(BaseYaku):
     def __init__(self):
-        super().__init__(YakuEnum.DRAGON_PUNG)
+        super().__init__(YakuEnum.TWO_DRAGON_PUNG)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
         return int(sum(
@@ -19,5 +19,4 @@ class DragonPung(BaseYaku):
                 or part.type is DivisionPartTypeEnum.QUAD
             )
             and part.counts.is_containing_only(Tiles.DRAGONS)
-
         ) == 2)
