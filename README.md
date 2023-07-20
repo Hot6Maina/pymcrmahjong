@@ -19,3 +19,6 @@ pure_straight
 pure_terminal_chows
 pure_triple_chow
 quadruple_chow
+short_straight
+three_suited_terminal_chows
+two_terminal_chows
