@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 from tile import Tile, Tiles
+from common import WaitEnum
 
 
 class AgariInfo(BaseModel):
@@ -13,3 +14,4 @@ class AgariInfo(BaseModel):
     is_last_discard: bool = False
     is_replacement_tile: bool = False
     is_robbing_the_kong: bool = False
+    wait_type: WaitEnum = WaitEnum.ELSE_WAIT

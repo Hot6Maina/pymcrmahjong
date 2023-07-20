@@ -11,10 +11,21 @@ from tile import Tile, Tiles
 
 class TileCount(BaseModel):
     counts: np.ndarray = np.zeros(len(Tiles.DEFAULTS), dtype=np.int64)
+    tile_num: list
 
     @property
     def num_tiles(self) -> int:
         return sum(self.counts)
+
+    @property
+    def get_tile_number(self) -> list:
+        if not self.tile_num:
+            for i in range(27):
+                self.tile_num.append(i%9+1)
+            if not self.tile_num:
+                self.tile_num.append(0)
+            self.tile_num.sort()
+        return self.tile_num
 
     @staticmethod
     def create_from_tiles(tiles: Iterable[Tile]):

@@ -9,6 +9,9 @@ class AllTypes(BaseYaku):
         super().__init__(YakuEnum.ALL_TYPES)
 
     def is_satisfied(self, division: Division, agari_info: AgariInfo):
-        return int(set([part.tile_type for part in division.parts])
-                   == {TileTypeEnum.MAN, TileTypeEnum.SOU, TileTypeEnum.PIN, TileTypeEnum.WIND, TileTypeEnum.DRAGON})
+        part_set = set([part.tile_type for part in division.parts])
+        for tile_type in (TileTypeEnum.MAN, TileTypeEnum.SOU, TileTypeEnum.PIN, TileTypeEnum.WIND, TileTypeEnum.DRAGON):
+            if tile_type not in part_set:
+                return int(False)
+        return int(True)
 

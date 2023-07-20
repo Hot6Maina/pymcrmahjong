@@ -34,28 +34,18 @@ class DivisionPartTypeEnum(UpperStrEnum):
     THIRTEEN_ORPHANS = auto()
 
 
-class HandShapeFuReasonEnum(UpperStrEnum):
+class HandShapeEnum(UpperStrEnum):
     SEVEN_PAIRS = auto()
     THIRTEEN_ORPHANS = auto()
     HONORS_AND_KITTED_TILES = auto()
     BASE = auto()
 
 
-class WaitFuReasonEnum(UpperStrEnum):
-    HEAD_WAIT = auto()
+class WaitEnum(UpperStrEnum):
+    SINGLE_WAIT = auto()
     CLOSED_WAIT = auto()
     EDGE_WAIT = auto()
-
-
-class AgariTypeFuReasonEnum(UpperStrEnum):
-    CONCEALED_RON = auto()
-    TSUMO = auto()
-    OPENED_PINFU = auto()
-
-
-class HeadFuReasonEnum(UpperStrEnum):
-    DOUBLE_WIND_HEAD = auto()
-    VALUE_HEAD = auto()
+    ELSE_WAIT = auto()
 
 
 class BodyFuReasonEnum(UpperStrEnum):
@@ -70,13 +60,13 @@ class BodyFuReasonEnum(UpperStrEnum):
     CONCEALED_OUTSIDE_QUAD = auto()
 
 
-FuReasonEnum = (
-    HandShapeFuReasonEnum
-    | WaitFuReasonEnum
-    | HeadFuReasonEnum
-    | AgariTypeFuReasonEnum
-    | BodyFuReasonEnum
-)
+# FuReasonEnum = (
+#     HandShapeFuReasonEnum
+#     | WaitFuReasonEnum
+#     | HeadFuReasonEnum
+#     | AgariTypeFuReasonEnum
+#     | BodyFuReasonEnum
+# )
 
 
 class YakuEnum(UpperStrEnum):
@@ -123,7 +113,7 @@ class YakuEnum(UpperStrEnum):
     PURE_SHIFTED_CHOWS = auto()
     ALL_FIVES = auto()
     TRIPLE_PUNG = auto()
-    THREE_CONCEALED_PUGNS = auto()
+    THREE_CONCEALED_PUNGS = auto()
 
     # 12 points
     LESSER_HONORS_AND_KNITTED_TILES = auto()
